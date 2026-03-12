@@ -19,6 +19,10 @@ Route::get('/', function () {
 });
 
 
+
+Route::get('/admin/dashboard', [FotoController::class, 'index'])->name('admin.dashboard');
+
+Route::delete('/foto/{id}', [FotoController::class, 'destroy'])->name('foto.destroy');
 Route::post('/foto/store', [FotoController::class,'store']);
 Route::post('/foto/update/{id}', [FotoController::class,'update']);
 Route::get('/foto/delete/{id}', [FotoController::class,'delete']);

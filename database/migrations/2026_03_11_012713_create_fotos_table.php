@@ -9,12 +9,13 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+ public function up()
 {
     Schema::create('fotos', function (Blueprint $table) {
         $table->id();
         $table->string('judul');
-        $table->string('gambar');
+        $table->string('gambar'); // <--- PASTIKAN BARIS INI ADA
+        $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
         $table->timestamps();
     });
 }

@@ -75,16 +75,11 @@ class FotoController extends Controller
 
     // Hapus foto
     public function destroy($id)
-    {
-        $foto = Foto::findOrFail($id);
+{
+    $foto = Foto::findOrFail($id);
 
-        // Hapus file gambar dari storage/public/foto
-        if ($foto->gambar && file_exists(public_path('foto/'.$foto->gambar))) {
-            unlink(public_path('foto/'.$foto->gambar));
-        }
+    $foto->delete();
 
-        $foto->delete();
-
-        return redirect()->back()->with('success', 'Foto berhasil dihapus');
-    }
+    return redirect()->back()->with('success', 'Foto berhasil dihapus');
+}
 }
